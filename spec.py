@@ -60,7 +60,13 @@ lut = (colormap._lut * 255).view(np.ndarray)  # Convert matplotlib colormap from
 
 # Apply the colormap
 img.setLookupTable(lut) # for input arguments
-
 img.setImage(image = np.transpose(magnitude), levels = (magnitude.min(), 1.01 * magnitude.max()), autoDownsampel = True)
 
+nChunks = len(time)
+nFreqs  = len(frequency)
+
+# scale image so axis is correct
+img.scale(time[-1] / nChunks , frequency[-1] / nFreqs )
+
+# start event loop for plot
 app.exec_()
