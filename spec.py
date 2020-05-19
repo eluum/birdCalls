@@ -67,6 +67,8 @@ nFreqs  = len(frequency)
 
 # scale image so axis is correct
 img.scale(time[-1] / nChunks , frequency[-1] / nFreqs )
+p.setLabel(axis = 'bottom', text = 'Time', units = 's')
+p.setLabel(axis = 'left', text = 'Frequency', units = 'Hz')
 
 # start event loop for plot
 app.exec_()
